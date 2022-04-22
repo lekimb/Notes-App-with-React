@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.notes-app * {
+    font-family: Poppins;
+    font-size: 16px;   
+}
+
+.notes-app {
+    height: 100vh;
+    max-height: 100%;
+}
+
+.topbar {
+    margin: 0 0.5em;
+    padding: 0.5em 0;
+    font-size: 24px;
+    border-bottom: solid 1px #eee;
+}
+
+.sidebar-and-note-wrapper {
+    display: flex;
+    
+    /* Cómo ajustar la altura a las dimensiones de la ventana y evitar así que aparezca el scroll? 
+    Resuelto 1) fijando un height de 100vh y un max-height del 100% en el contenedor global notes-app y 2) fijando un height para note calculado a partir del 100% menos los pixeles exactos de la topbar*/
+}
+
+.sidebar {
+    flex-shrink: 0;
+    flex-basis: 250px;
+}
+
+.new-note {
+    background-color: #fff;
+    border: none;
+    padding: 0.5em;
+    color: lightgreen;
+    font-weight: bold;
+}
+
+.new-note:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Little note */
+.little-note {
+    padding: 0 0.5em;
+    cursor: pointer;
+}
+.little-note__header {
+    display: flex;
+    justify-content: space-between;
+}
+.little-note__title {
+    font-weight: bold;
+    border-top: 1px solid #eee;
+    padding-top: 0.5em;
+}
+
+.little-note__delete {
+    align-self: flex-end;
+    color: #666;
+}
+
+.little-note__body {
+    font-size: 12px;
+}
+
+.little-note__date {
+    font-size: 12px;
+    color: #aaa;
+    padding-bottom: 0.5em;
+}
+
+.little-note--selected {
+    background-color: #eee;
+}
+
+/* Note preview */
+.note {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.5em;
+    flex-grow: 0;
+    /* ¿Por qué 'note' ocupa a lo ancho más de lo que la anchura de la ventana permite, generando así una barra de scroll horizontal? 
+    Resuelto fijando un width del 100% para note__title y note__body*/
+    height: calc(100vh - 24*1.6px - 24px);
+    /* 100 viewport heights - fontsize * lineheight - padding */
+}
+
+.note__title, .note__body {
+    border: none;
+    outline: none;
+    line-height: 1.7em;
+    width: 100%;
+}
+
+.note__title {
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.note__body {
+    flex-grow: 1;
+    resize: none;
+
+}
